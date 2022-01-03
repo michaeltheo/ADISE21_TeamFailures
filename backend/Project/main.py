@@ -4,7 +4,9 @@ from .database import engine
 from .routers import user,Authentication
 
 
-app=FastAPI()
+app=FastAPI(
+    
+)
 
 #when you find a new model added to database
 models.Base.metadata.create_all(engine)
