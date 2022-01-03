@@ -2,6 +2,7 @@ from fastapi import FastAPI,Depends
 from . import schemas,models
 from .database import engine,SessionLocal
 from sqlalchemy.orm import Session
+from passlib.context import CryptContext
 
 app=FastAPI()
 
@@ -15,12 +16,18 @@ def get_db():
     finally:
         db.close()
 
+#hashing
+pwd_cxt=CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+
 @app.post('/user')
 def create_user(request:schemas.User,db:Session=Depends(get_db)):
+  #hash password
+  hashedPassword=pwd_cxt.hash(request.password)
   new_user=models.User(
       name=request.name,
       email=request.email,
-      password=request.password
+      password=hashedPassword
   )
   db.add(new_user)
   db.commit()
