@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from sqlalchemy.sql.functions import user
 
 class User(BaseModel):
     name:str
@@ -12,3 +13,7 @@ class ShowUser(BaseModel):
 
     class Config():
         orm_mode=True
+
+class Login(BaseModel):
+    username:str
+    password:str
