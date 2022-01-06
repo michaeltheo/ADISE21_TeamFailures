@@ -4,11 +4,13 @@ from fastapi import HTTPException,status
 from sqlalchemy.sql.expression import func
 from typing import List
 from .. import schemas,models
+from uuid import UUID
 
 def create_board(request:schemas.Boards,db:Session):
     new_board=models.Board(
-    id = db.query(func.max(models.Board.id)).scalar()+1,
-    creator_id=request.creator_id)
+    creator_id=request.creator_id,
+    players=[],
+    board=[[],[],[],[]])
     db.add(new_board)
     db.commit()
     db.refresh(new_board)

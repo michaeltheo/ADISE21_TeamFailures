@@ -4,6 +4,8 @@ from sqlalchemy.orm import relationship
 from .database import Base
 from typing import List
 from sqlalchemy.sql.sqltypes import ARRAY
+from sqlalchemy.dialects.postgresql import UUID
+import uuid
 
 class User(Base):
     __tablename__='Users'
@@ -17,7 +19,8 @@ class User(Base):
 # boards Model
 class Board(Base):
     __tablename__='Board'
-    id=Column(Integer,primary_key=True,index=True)
+    id=Column(UUID(as_uuid=True),primary_key=True, default=uuid.uuid4)
     creator_id=Column(Integer,ForeignKey('Users.id'))
-    players=Column(ARRAY(String,dimensions=2))
+    players=Column(ARRAY(String))
+    board=Column(ARRAY(String))
     creator=relationship('User',back_populates='board')
