@@ -27,7 +27,13 @@ def update(id:UUID,request:schemas.Boards,db:Session):
     db.commit()
     return request
 
-
+def destroy(id:UUID,db:Session):
+    board=db.query(models.Board).filter(models.Board.id==id)
+    if not board.first():
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f'Board with id {id} was not found')
+    board.delete(synchronize_session=False)
+    db.commit()
+    return 'deleted'
 
 def get_boards(db:Session):
     boards=db.query(models.Board).all()
