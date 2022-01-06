@@ -31,5 +31,6 @@ class Boards(BaseModel):
     id:Optional[int]
     creator_id:int
     creator:Optional[ShowUser]
+    players:Optional[ShowUser]
     class Config():
         orm_mode=True
