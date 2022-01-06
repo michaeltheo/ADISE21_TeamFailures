@@ -1,8 +1,6 @@
 from fastapi import APIRouter,Depends
 from sqlalchemy.orm.session import Session
-from sqlalchemy.sql.functions import func, mode
-from sqlalchemy.sql.expression import func
-from .. import schemas, database,models
+from .. import schemas, database
 from ..repository import boards
 from typing import List
 

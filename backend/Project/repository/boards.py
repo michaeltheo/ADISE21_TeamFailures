@@ -3,7 +3,6 @@ from sqlalchemy.sql.functions import mode
 from fastapi import HTTPException,status
 from sqlalchemy.sql.expression import func
 from typing import List
-from fastapi import APIRouter,Depends
 from .. import schemas,models
 
 def create_board(request:schemas.Boards,db:Session):
