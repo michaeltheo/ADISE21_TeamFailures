@@ -22,7 +22,7 @@ def login(request:OAuth2PasswordRequestForm = Depends(), db: Session = Depends(d
                             detail=f"Incorrect password")
 
     access_token = JWTtoken.create_access_token(data={"sub": user.email})
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {"access_token": access_token, "token_type": "bearer","user":user}
 
 @router.post('/register',response_model=schemas.ShowUser)
 def create_user(request:schemas.User,db:Session=Depends(database.get_db)):
