@@ -26,3 +26,7 @@ def get_board(id:int,db:Session=Depends(database.get_db),get_current_user:schema
 @router.put('/{id}',status_code=status.HTTP_202_ACCEPTED)
 def update(id:UUID,request:schemas.Boards,db:Session=Depends(database.get_db),get_current_user:schemas.User=Depends(oauth2.get_current_user)):
     return boards.update(id,request,db)
+
+@router.delete('/{id}',status_code=status.HTTP_204_NO_CONTENT)
+def destroy(id:UUID,db:Session=Depends(database.get_db),get_current_user:schemas.User=Depends(oauth2.get_current_user)):
+    return boards.destroy(id,db)
