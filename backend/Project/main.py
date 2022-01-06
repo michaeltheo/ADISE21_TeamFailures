@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from . import models
 from .database import engine
-from .routers import user,Authentication
+from .routers import user,Authentication,boards
 
 
 app=FastAPI(
@@ -14,5 +14,6 @@ models.Base.metadata.create_all(engine)
 #Routers
 app.include_router(Authentication.router)
 app.include_router(user.router)
+app.include_router(boards.router)
 
 
