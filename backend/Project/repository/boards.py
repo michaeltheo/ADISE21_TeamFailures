@@ -10,11 +10,24 @@ def create_board(request:schemas.Boards,db:Session):
     new_board=models.Board(
     creator_id=request.creator_id,
     players=[],
-    board=[[],[],[],[]])
+    board=[])
     db.add(new_board)
     db.commit()
     db.refresh(new_board)
     return request
+
+def update(id:UUID,request:schemas.Boards,db:Session):
+    board=db.query(models.Board).filter(models.Board.id==id)
+    if not board.first():
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+        detail=f'Board with id {id} was not found')
+    for item in request:
+        if item[1] is not None:
+            board.update({item[0]:item[1]})
+    db.commit()
+    return request
+
+
 
 def get_boards(db:Session):
     boards=db.query(models.Board).all()
