@@ -30,9 +30,9 @@ class TokenData(BaseModel):
 
 class Boards(BaseModel):
     id:Optional[UUID]
-    creator_id:int
+    creator_id:Optional[int]
     creator:Optional[ShowUser]
-    players:Optional[ShowUser]
-    board:Optional[List[str]]
+    players:Optional[List[str]]
+    board:Optional[List]
     class Config():
         orm_mode=True
