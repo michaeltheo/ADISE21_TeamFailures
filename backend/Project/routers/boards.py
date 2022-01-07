@@ -20,7 +20,7 @@ def get_boards(db:Session=Depends(database.get_db),get_current_user:schemas.User
     return boards.get_boards(db)
 
 @router.get('/{id}',response_model=schemas.Boards)
-def get_board(id:int,db:Session=Depends(database.get_db),get_current_user:schemas.User=Depends(oauth2.get_current_user)):
+def get_board(id:UUID,db:Session=Depends(database.get_db),get_current_user:schemas.User=Depends(oauth2.get_current_user)):
     return boards.get_board(id,db)
 
 @router.put('/{id}',status_code=status.HTTP_202_ACCEPTED)

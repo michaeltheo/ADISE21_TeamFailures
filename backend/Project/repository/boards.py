@@ -42,7 +42,7 @@ def get_boards(db:Session):
         detail=f'There are no boards stored')
     return boards
 
-def get_board(id:int,db:Session):
+def get_board(id:UUID,db:Session):
     board=db.query(models.Board).filter(models.Board.id==id).first()
     if not board:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
