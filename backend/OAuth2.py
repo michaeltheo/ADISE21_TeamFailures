@@ -4,6 +4,7 @@ from . import JWTtoken
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/Auth/login")
 
+
 def get_current_user(data: str = Depends(oauth2_scheme)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -12,4 +13,3 @@ def get_current_user(data: str = Depends(oauth2_scheme)):
     )
 
     return JWTtoken.verify_token(data, credentials_exception)
-

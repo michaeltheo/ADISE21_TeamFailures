@@ -1,7 +1,10 @@
+from typing import List
+from fastapi.param_functions import Body
 from pydantic import BaseModel
-from sqlalchemy.sql.functions import user
-from typing import Optional, List
+from typing import Optional
 from uuid import UUID
+
+from sqlalchemy.sql.sqltypes import Boolean
 
 
 class User(BaseModel):
@@ -11,9 +14,10 @@ class User(BaseModel):
 
 
 class ShowUser(BaseModel):
+    id: int
     name: str
     email: str
-
+    # password:str
     class Config:
         orm_mode = True
 
@@ -36,7 +40,7 @@ class Boards(BaseModel):
     id: Optional[UUID]
     creator_id: Optional[int]
     creator: Optional[ShowUser]
-    players: Optional[List[str]]
+    players: Optional[List]
     board: Optional[List]
     isFull: Optional[bool]
 
