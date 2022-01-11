@@ -9,7 +9,6 @@
 	</div>
 	<a class:active={$page.path === '/'} sveltekit:prefetch href="/">Home</a>
 	{#if $session.user}
-		<a class:active={$page.path === '/quatro'} sveltekit:prefetch href="/quatro">Quatro</a>
 		<a class:active={$page.path === '/profile'} sveltekit:prefetch href="/profile">Profile</a>
 	{/if}
 </nav>
@@ -22,6 +21,7 @@
 		background: #fff;
 		padding: 20px 0 20px 20px;
 	}
+
 	a {
 		color: #000;
 		text-decoration: none;
@@ -32,17 +32,20 @@
 	a:hover {
 		background: rgb(207, 214, 255);
 	}
+
 	.header {
 		display: flex;
 		align-items: center;
 		margin: 10px 0 20px 5px;
 	}
+
 	.header img {
 		width: 32px;
 		height: 32px;
 		filter: saturate(0) brightness(0.6) contrast(2) invert(77%) sepia(38%) saturate(246%)
 			hue-rotate(156deg) brightness(86%) contrast(89%);
 	}
+
 	h1 {
 		margin: 0 0 0 12px;
 		font-size: 2rem;
