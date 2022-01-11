@@ -1,5 +1,7 @@
 <script>
 	import Index from '../index.svelte';
+	import { Button } from 'svelte-materialify';
+
 	let gamePhase = 'choose';
 	let activePlayer = 'A';
 
@@ -65,7 +67,8 @@
 	var players = [];
 	var creator = [];
 	onMount(async function getBoard() {
-		const res = await fetch(`http://127.0.0.1:8000/boards/04fbf428-5e68-451b-95e9-b722a9c687c5`, {
+		let uid = $page.params.slug;
+		const res = await fetch(`http://127.0.0.1:8000/boards/${uid}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -81,14 +84,23 @@
 			if (board_isFull) {
 				isFull = true;
 			}
-			console.log(board_isFull);
 		} else {
 			error = `LOS001: ${body.detail}`;
 		}
 	});
+
+	function handleClick() {
+		var id = $page.params.slug;
+		console.log(id);
+		console.log(page.params);
+	}
 </script>
 
-{#if !isFull}
+<div class="game">
+	<Button on:click={handleClick}>click me</Button>
+</div>
+
+<!-- {#if !isFull}
 	<div class="game">
 		Hello {creator}
 		<div class="gameboard">
@@ -134,8 +146,7 @@
 	</div>
 {:else}
 	<div>Game is Full {players[0]} vs {players[1]}</div>
-{/if}
-
+{/if} -->
 <style>
 	.game {
 		margin: 0 auto;

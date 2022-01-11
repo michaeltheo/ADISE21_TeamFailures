@@ -89,6 +89,6 @@ def get_board(id: UUID, db: Session):
     if not board:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Board with the id {id} is not available",
+            detail=f"Board with the Uuid {id} is not available",
         )
     return board
