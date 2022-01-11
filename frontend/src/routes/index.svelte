@@ -5,7 +5,7 @@
 <script>
 	import Welcome from '$lib/Welcome.svelte';
 	import { session } from '$app/stores';
-	// import BoardList from '$lib/BoardList.svelte';
+	import BoardList from '$lib/BoardList.svelte';
 </script>
 
 <svelte:head>
@@ -13,7 +13,7 @@
 </svelte:head>
 
 {#if $session.user}
-	<!-- <BoardList /> -->
+	<BoardList />
 {:else}
 	<Welcome />
 {/if}
