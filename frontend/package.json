@@ -10,7 +10,12 @@
     "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
   },
   "devDependencies": {
+    "@mdi/js": "^6.5.95",
+    "@smui/button": "^6.0.0-beta.13",
     "@smui/icon-button": "^6.0.0-beta.13",
+    "@smui/layout-grid": "^6.0.0-beta.13",
+    "@smui/textfield": "^6.0.0-beta.13",
+    "@smui/top-app-bar": "^6.0.0-beta.13",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "prettier": "^2.4.1",
