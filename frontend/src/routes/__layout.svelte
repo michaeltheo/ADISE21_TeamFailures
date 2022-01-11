@@ -49,10 +49,12 @@
 		border-radius: 18px;
 		margin: 20px;
 	}
+
 	.content-container {
 		height: 100%;
 		width: 100%;
 	}
+
 	.background {
 		background: #fff;
 		height: 100%;
