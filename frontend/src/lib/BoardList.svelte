@@ -1,19 +1,26 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { Button } from 'svelte-materialify';
+	import { session } from '$app/stores';
 
+	let creator_id = $session.user.id;
+	let players = [$session.user.name];
 	let input_value = '';
 	var error = undefined;
 	async function createBoard() {
 		const res = await fetch('http://127.0.0.1:8000/boards/', {
 			method: 'POST',
-			body: {},
+			body: JSON.stringify({
+				creator_id,
+				players
+			}),
 			headers: {
-				'Content-Type': 'application/json',
-				'Content-Type': 'application/x-www-form-urlencoded'
+				'Content-Type': 'application/json'
+				// 'Content-Type': 'application/x-www-form-urlencoded'
 			}
 		});
 		const body = await res.json();
+		console.log($session.user);
 		if (res.status == 200) {
 			const board_id = body.id;
 			goto('/boards/' + board_id);
