@@ -31,8 +31,7 @@ def create_board(request: schemas.Boards, db: Session):
 
 def get_random_board(db: Session):
     # find a board with 1 player already inside
-    # board = db.query(models.Boards).order_by(asc(models.Boards.players)).first()
-    board = db.query(models.Boards).filter(models.Boards.isFull == False).first()
+    board = db.query(models.Boards).filter(models.Boards.isFull==False).first()
     # models.Boards.players.name. !=None).first()
 
     if not board:

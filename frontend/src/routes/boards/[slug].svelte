@@ -1,63 +1,63 @@
 <script>
-	import Index from '../index.svelte';
-	import { Button } from 'svelte-materialify';
+	// import Index from '../index.svelte';
+	// import { Button } from 'svelte-materialify';
 
-	let gamePhase = 'choose';
-	let activePlayer = 'A';
+	// let gamePhase = 'choose';
+	// let activePlayer = 'A';
 
-	// what if I create a grid of coordinates
-	let gameCoords = [
-		['A1', null],
-		['A2', null],
-		['A3', null],
-		['A4', null],
-		['B1', null],
-		['B2', null],
-		['B3', null],
-		['B4', null],
-		['C1', null],
-		['C2', null],
-		['C3', null],
-		['C4', null],
-		['D1', null],
-		['D2', null],
-		['D3', null],
-		['D4', null]
-	];
+	// // what if I create a grid of coordinates
+	// let gameCoords = [
+	// 	['A1', null],
+	// 	['A2', null],
+	// 	['A3', null],
+	// 	['A4', null],
+	// 	['B1', null],
+	// 	['B2', null],
+	// 	['B3', null],
+	// 	['B4', null],
+	// 	['C1', null],
+	// 	['C2', null],
+	// 	['C3', null],
+	// 	['C4', null],
+	// 	['D1', null],
+	// 	['D2', null],
+	// 	['D3', null],
+	// 	['D4', null]
+	// ];
 
-	// create a list of winning sets???
-	let winningRows = [
-		['A1', 'A2', 'A3', 'A4'],
-		['B1', 'B2', 'B3', 'B4'],
-		['C1', 'C2', 'C3', 'C4'],
-		['D1', 'D2', 'D3', 'D4']
-	];
-	let winningColumns = [
-		['A1', 'B1', 'C1', 'D1'],
-		['A2', 'B2', 'C2', 'D2'],
-		['A3', 'B3', 'C3', 'D3'],
-		['A4', 'B4', 'C4', 'D4']
-	];
-	let winningDiagonals = [
-		['A1', 'B2', 'C3', 'D4'],
-		['A4', 'B3', 'C2', 'D1']
-	];
-	let winningSquares = [
-		['A1', 'B1', 'A2', 'B2'],
-		['A2', 'B2', 'A3', 'B3'],
-		['A3', 'B3', 'A4', 'B4'],
-		['B1', 'C1', 'B2', 'C2'],
-		['B2', 'C2', 'B3', 'C3'],
-		['B3', 'C3', 'B4', 'C4'],
-		['C1', 'D1', 'C2', 'D2'],
-		['C2', 'D2', 'C3', 'D3'],
-		['C3', 'D3', 'C4', 'D4'],
-		['A1', 'C1', 'A3', 'C3'],
-		['A2', 'C2', 'A4', 'C4'],
-		['B1', 'D1', 'B3', 'D3'],
-		['B2', 'D2', 'B4', 'D4'],
-		['A1', 'A4', 'D1', 'D4']
-	];
+	// // create a list of winning sets???
+	// let winningRows = [
+	// 	['A1', 'A2', 'A3', 'A4'],
+	// 	['B1', 'B2', 'B3', 'B4'],
+	// 	['C1', 'C2', 'C3', 'C4'],
+	// 	['D1', 'D2', 'D3', 'D4']
+	// ];
+	// let winningColumns = [
+	// 	['A1', 'B1', 'C1', 'D1'],
+	// 	['A2', 'B2', 'C2', 'D2'],
+	// 	['A3', 'B3', 'C3', 'D3'],
+	// 	['A4', 'B4', 'C4', 'D4']
+	// ];
+	// let winningDiagonals = [
+	// 	['A1', 'B2', 'C3', 'D4'],
+	// 	['A4', 'B3', 'C2', 'D1']
+	// ];
+	// let winningSquares = [
+	// 	['A1', 'B1', 'A2', 'B2'],
+	// 	['A2', 'B2', 'A3', 'B3'],
+	// 	['A3', 'B3', 'A4', 'B4'],
+	// 	['B1', 'C1', 'B2', 'C2'],
+	// 	['B2', 'C2', 'B3', 'C3'],
+	// 	['B3', 'C3', 'B4', 'C4'],
+	// 	['C1', 'D1', 'C2', 'D2'],
+	// 	['C2', 'D2', 'C3', 'D3'],
+	// 	['C3', 'D3', 'C4', 'D4'],
+	// 	['A1', 'C1', 'A3', 'C3'],
+	// 	['A2', 'C2', 'A4', 'C4'],
+	// 	['B1', 'D1', 'B3', 'D3'],
+	// 	['B2', 'D2', 'B4', 'D4'],
+	// 	['A1', 'A4', 'D1', 'D4']
+	// ];
 
 	import { session, page } from '$app/stores';
 	import { onMount } from 'svelte';
@@ -77,6 +77,7 @@
 		});
 		const body = await res.json();
 		console.log(body);
+		isFull = body.isFull;
 		if (res.status == 200) {
 			const board_isFull = body.isFull;
 			players = body.players;
@@ -88,21 +89,10 @@
 			error = `LOS001: ${body.detail}`;
 		}
 	});
-
-	function handleClick() {
-		var id = $page.params.slug;
-		console.log(id);
-		console.log(page.params);
-	}
 </script>
 
-<div class="game">
-	<Button on:click={handleClick}>click me</Button>
-</div>
-
-<!-- {#if !isFull}
+{#if isFull == false}
 	<div class="game">
-		Hello {creator}
 		<div class="gameboard">
 			<div class="boardspot" id="A1" />
 			<div class="boardspot" id="A2" />
@@ -145,8 +135,9 @@
 		</div>
 	</div>
 {:else}
-	<div>Game is Full {players[0]} vs {players[1]}</div>
-{/if} -->
+	<div>Game is Full, Try a different ID</div>
+{/if}
+
 <style>
 	.game {
 		margin: 0 auto;
