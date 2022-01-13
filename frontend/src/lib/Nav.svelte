@@ -4,7 +4,6 @@
 
 <nav>
 	<div class="header" href="/">
-		<img src="svelte-logo.svg" alt="SvelteKit" />
 		<h1>Quatro</h1>
 	</div>
 	<a class:active={$page.path === '/'} sveltekit:prefetch href="/">Home</a>

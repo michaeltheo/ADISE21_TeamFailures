@@ -31,10 +31,13 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { session } from '$app/stores';
+	import { List, ListGroup, ListItem, Icon } from 'svelte-materialify';
+	import { mdiAccount, mdiEmail, mdiShieldLock, mdiChevronUp, mdiExitRun } from '@mdi/js';
 
 	export let email;
 	export let name;
 	export let token;
+	let active = false;
 	/*
 	let name
 
@@ -58,10 +61,51 @@
 	<title>Profile</title>
 </svelte:head>
 
-<div class="content">
-	<h1>Profile</h1>
+<div class="content d-flex justify-center">
+	<List class="elevation-3" style="width:600px">
+		<ListItem>
+			<span slot="prepend">
+				<Icon path={mdiAccount} size="40px" />
+			</span>
+			<div style="font-size: 150% ;">
+				{name}
+			</div>
+		</ListItem>
+		<ListItem>
+			<span slot="prepend">
+				<Icon path={mdiEmail} size="40px" />
+			</span>
+			<div style="font-size: 150% ;">
+				{email}
+			</div>
+		</ListItem>
+
+		<ListItem>
+			<span slot="prepend">
+				<Icon path={mdiExitRun} size="40px" />
+			</span>
+			<button on:click={logout} style="width: 496px;">
+				<p style="text-align: left; font-size:150%">Log Out</p>
+			</button>
+		</ListItem>
+		<ListGroup bind:active offset={72}>
+			<span slot="prepend">
+				<Icon path={mdiShieldLock} size="40px" />
+			</span>
+			<span slot="activator"> <div style="font-size: 150% ;">Token</div></span>
+			<span slot="append">
+				<Icon path={mdiChevronUp} rotate={active ? 0 : 180} size="40px" />
+			</span>
+			<ListItem>
+				<div style="font-size: 80%;">
+					{token}
+				</div>
+			</ListItem>
+		</ListGroup>
+	</List>
+	<!-- <h1>Profile</h1>
 	<p>Hello {name} you are logged in with the email {email}, token {token}</p>
-	<button on:click={logout}>log out</button>
+	<button on:click={logout}>log out</button> -->
 </div>
 
 <style>
@@ -74,10 +118,9 @@
 	}
 
 	button {
-		background: var(--bg-color-2);
-		padding: 0.7rem 1.5rem;
 		border-radius: 12px;
-		color: #fff;
+		width: 100px;
+		/* color: #fff; */
 	}
 	button:hover {
 		color: #000;
