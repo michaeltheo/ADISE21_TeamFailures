@@ -26,6 +26,7 @@ class Boards(Base):
     creator_id = Column(Integer, ForeignKey("Users.id"))
     players = Column(postgresql.ARRAY(String))
     board = Column(postgresql.ARRAY(String))
+    active_player = Column(String)
     isFull = Column(Boolean)
 
     creator = relationship("User", back_populates="boards")

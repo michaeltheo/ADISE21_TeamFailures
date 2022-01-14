@@ -103,9 +103,6 @@
 			</ListItem>
 		</ListGroup>
 	</List>
-	<!-- <h1>Profile</h1>
-	<p>Hello {name} you are logged in with the email {email}, token {token}</p>
-	<button on:click={logout}>log out</button> -->
 </div>
 
 <style>
