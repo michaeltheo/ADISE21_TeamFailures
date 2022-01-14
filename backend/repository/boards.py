@@ -19,7 +19,11 @@ def create_board(request: schemas.Boards, db: Session):
         id=uuid4(),
         creator_id=request.creator_id,
         players=request.players,
-        board=[],
+        board=[[None, None, None, None],
+               [None, None, None, None],
+               [None, None, None, None],
+               [None, None, None, None]],
+        active_player=request.active_player,
         isFull=False,
     )
     db.add(new_board)
@@ -31,7 +35,8 @@ def create_board(request: schemas.Boards, db: Session):
 
 def get_random_board(db: Session):
     # find a board with 1 player already inside
-    board = db.query(models.Boards).filter(models.Boards.isFull==False).first()
+    board = db.query(models.Boards).filter(
+        models.Boards.isFull == False).first()
     # models.Boards.players.name. !=None).first()
 
     if not board:
