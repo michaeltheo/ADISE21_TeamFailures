@@ -110,6 +110,26 @@
 			error = `LOS001: ${body.message}`;
 		}
 	}
+	async function endTurn() {
+		const id = $page.params.slug;
+		const res = await fetch(`http://127.0.0.1:8000/boards/${id}`, {
+			method: 'PUT',
+			body: JSON.stringify({
+				active_player: 'mike'
+			}),
+			headers: {
+				'Content-Type': 'application/json'
+				// 'Content-Type': 'application/x-www-form-urlencoded'
+			}
+		});
+		const body = await res.json();
+		active_player = body.active_player;
+		if (res.status == 202) {
+			console.log(active_player);
+		} else {
+			error = `LOS001: ${body.message}`;
+		}
+	}
 </script>
 
 {#if isFull == false}
