@@ -18,6 +18,7 @@ class ShowUser(BaseModel):
     name: str
     email: str
     # password:str
+
     class Config:
         orm_mode = True
 
@@ -42,6 +43,7 @@ class Boards(BaseModel):
     creator: Optional[ShowUser]
     players: Optional[List]
     board: Optional[List]
+    active_player: Optional[str]
     isFull: Optional[bool]
 
     class Config:
