@@ -132,6 +132,12 @@
 	}
 </script>
 
+{#if active_player == logged_player}
+	<Button size="large" on:click={endTurn}>END TURN</Button>
+{:else}
+	<div>OPPONEN'TS TURN</div>
+{/if}
+
 {#if isFull == false}
 	<div class="game">
 		<div class="gameboard">
