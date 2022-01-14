@@ -35,7 +35,7 @@
 			});
 
 			if (res.ok) {
-				message = 'User was registered successfully! Please check your email';
+				message = 'User was registered successfully! Log in';
 				email = '';
 				name = '';
 				password = '';
