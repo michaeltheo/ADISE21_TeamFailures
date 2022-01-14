@@ -61,14 +61,17 @@
 
 	import { session, page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import { Button } from 'svelte-materialify';
 
 	var error = undefined;
 	var isFull = false;
 	var players = [];
 	var creator = [];
+	let logged_player = $session.user.name;
+	let active_player = '';
+	const id = $page.params.slug;
 	onMount(async function getBoard() {
-		let uid = $page.params.slug;
-		const res = await fetch(`http://127.0.0.1:8000/boards/${uid}`, {
+		const res = await fetch(`http://127.0.0.1:8000/boards/${id}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -76,15 +79,14 @@
 			}
 		});
 		const body = await res.json();
-		console.log(body);
-		isFull = body.isFull;
+
 		if (res.status == 200) {
-			const board_isFull = body.isFull;
+			active_player = body.active_player;
+			isFull = body.isFull;
 			players = body.players;
+			const board_isFull = body.isFull;
 			creator = body.creator.name;
-			if (board_isFull) {
-				isFull = true;
-			}
+			if (!isFull && creator != logged_player) update();
 		} else {
 			error = `LOS001: ${body.detail}`;
 		}
