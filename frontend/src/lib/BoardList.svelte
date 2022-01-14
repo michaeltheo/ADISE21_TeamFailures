@@ -1,18 +1,22 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { Button } from 'svelte-materialify';
-	import { session } from '$app/stores';
+	import { session, page } from '$app/stores';
 
 	let creator_id = $session.user.id;
 	let players = [$session.user.name];
+	let active_player = $session.user.name;
+	let creator = '';
 	let input_value = '';
 	var error = undefined;
+	let board_id = '';
 	async function createBoard() {
 		const res = await fetch('http://127.0.0.1:8000/boards/', {
 			method: 'POST',
 			body: JSON.stringify({
 				creator_id,
-				players
+				players,
+				active_player
 			}),
 			headers: {
 				'Content-Type': 'application/json'
@@ -25,7 +29,7 @@
 			const board_id = body.id;
 			goto('/boards/' + board_id);
 		} else {
-			error = `LOS001: ${body.message}`;
+			error = `LOS001: ${body.detail}`;
 		}
 	}
 	async function joinBoard() {
@@ -40,7 +44,7 @@
 			const body = await res.json();
 			console.log(body);
 			if (res.status == 200) {
-				const board_id = body.id;
+				board_id = body.id;
 				goto('/boards/' + board_id);
 			} else {
 				error = `LOS001: ${body.detail}`;
