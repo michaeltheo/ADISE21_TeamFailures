@@ -163,21 +163,23 @@
 				<div id="activespot" />
 			</div>
 			<div class="inactive">
-				<img class="piece" id="p0001" src="images/p0001.png" />
-				<img class="piece" id="p0010" src="images/p0010.png" />
-				<img class="piece" id="p0011" src="images/p0011.png" />
-				<img class="piece" id="p0100" src="images/p0100.png" />
-				<img class="piece" id="p0101" src="images/p0101.png" />
-				<img class="piece" id="p0110" src="images/p0110.png" />
-				<img class="piece" id="p0111" src="images/p0111.png" />
-				<img class="piece" id="p1000" src="images/p1000.png" />
-				<img class="piece" id="p1001" src="images/p1001.png" />
-				<img class="piece" id="p1010" src="images/p1010.png" />
-				<img class="piece" id="p1011" src="images/p1011.png" />
-				<img class="piece" id="p1100" src="images/p1100.png" />
-				<img class="piece" id="p1101" src="images/p1101.png" />
-				<img class="piece" id="p1110" src="images/p1110.png" />
-				<img class="piece" id="p1111" src="images/p1111.png" />
+				<img class="piece" id="p0001" src="  /images/p0000.png" />
+				<img class="piece" id="p0001" src="  /images/p0001.png" />
+				<img class="piece" id="p0010" src="  /images/p0010.png" />
+				<img class="piece" id="p0011" src="  /images/p0011.png" />
+				<img class="piece" id="p0100" src="  /images/p0100.png" />
+				<img class="piece" id="p0101" src="  /images/p0101.png" />
+				<img class="piece" id="p0110" src="  /images/p0110.png" />
+				<img class="piece" id="p0111" src="  /images/p0111.png" />
+				<!-- edw eina gia p2 -->
+				<img class="piece" id="p1000" src="  /images/p1000.png" />
+				<img class="piece" id="p1001" src="  /images/p1001.png" />
+				<img class="piece" id="p1010" src="  /images/p1010.png" />
+				<img class="piece" id="p1011" src="  /images/p1011.png" />
+				<img class="piece" id="p1100" src="  /images/p1100.png" />
+				<img class="piece" id="p1101" src="  /images/p1101.png" />
+				<img class="piece" id="p1110" src="/images/p1110.png" />
+				<img class="piece" id="p1111" src="/images/p1111.png" />
 			</div>
 		</div>
 	</div>
