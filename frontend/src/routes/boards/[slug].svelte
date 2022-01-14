@@ -91,6 +91,25 @@
 			error = `LOS001: ${body.detail}`;
 		}
 	});
+
+	async function update() {
+		const res = await fetch(`http://127.0.0.1:8000/boards/${id}`, {
+			method: 'PUT',
+			body: JSON.stringify({
+				players: [logged_player, creator]
+			}),
+			headers: {
+				'Content-Type': 'application/json'
+				// 'Content-Type': 'application/x-www-form-urlencoded'
+			}
+		});
+		const body = await res.json();
+		if (res.status == 202) {
+			console.log('done  ');
+		} else {
+			error = `LOS001: ${body.message}`;
+		}
+	}
 </script>
 
 {#if isFull == false}
