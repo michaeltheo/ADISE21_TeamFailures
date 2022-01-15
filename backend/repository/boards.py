@@ -141,5 +141,42 @@ def update(id: UUID, request: schemas.Boards, db: Session):
     if len(board_model.players) == 2:
         board.update({"isFull": True})
     db.commit()
+    checkWin(board_model)
     json_board = jsonable_encoder(board.first())
     return JSONResponse(content=json_board)
+
+
+def checkWin(board):
+    Win = False
+    how = ''
+    # check Rows
+    try:
+        for x in range(4):
+            if board.board[x][0][0] == board.board[x][1][0] == board.board[x][2][0] == board.board[x][3][0]:
+                Win = True
+                how = ' Win by row'
+    except:
+        pass
+
+    # # check Collumns
+    try:
+        for x in range(4):
+            if board.board[0][x][0] == board.board[1][x][0] == board.board[2][x][0] == board.board[3][x][0]:
+                Win = True
+                how = 'Win by column'
+    except:
+        pass
+    # # check Crosss1
+    try:
+        if board.board[0][0][0] == board.board[1][1][0] == board.board[2][2][0] == board.board[3][3][0]:
+            Win = True
+            how = 'Win by cross'
+    except:
+        pass
+    # # check Cross2
+    try:
+        if board.board[3][0][0] == board.board[2][1][0] == board.board[1][2][0] == board.board[0][3][0]:
+            Win = True
+            how = 'Win by cross'
+    except:
+        pass
