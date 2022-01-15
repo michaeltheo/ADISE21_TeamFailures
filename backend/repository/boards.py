@@ -204,7 +204,31 @@ def checkResult(board):
         for x in range(4):
             if board.board[0][x][0] == board.board[1][x][0] == board.board[2][x][0] == board.board[3][x][0]:
                 Win = True
-                how = 'Win by column'
+                how = 'Win by column by color'
+                # Check if the tall piece
+            elif (board.board[0][x][1] in tall_piece) & (board.board[1][x][1] in tall_piece) & (board.board[2][x][1] in tall_piece) & (board.board[3][x][1] in tall_piece):
+                Win = True
+                how = ' Win by column by tall piece'
+                # Check short piece
+            elif (board.board[0][x][1] in short_piece) & (board.board[1][x][1] in short_piece) & (board.board[2][x][1] in short_piece) & (board.board[3][x][1] in short_piece):
+                Win = True
+                how = ' Win by column by short piece'
+                # Check circle piece
+            elif (board.board[0][x][1] in circle_piece) & (board.board[1][x][1] in circle_piece) & (board.board[2][x][1] in circle_piece) & (board.board[3][x][1] in circle_piece):
+                Win = True
+                how = ' Win by column by circle piece'
+                # Check square piece
+            elif (board.board[0][x][1] in square_piece) & (board.board[1][x][1] in square_piece) & (board.board[2][x][1] in square_piece) & (board.board[3][x][1] in square_piece):
+                Win = True
+                how = ' Win by column by square piece'
+                # Check hollow top piece
+            elif (board.board[0][x][1] in hollow_top_piece) & (board.board[1][x][1] in hollow_top_piece) & (board.board[2][x][1] in hollow_top_piece) & (board.board[3][x][1] in hollow_top_piece):
+                Win = True
+                how = ' Win by column by hollow top piece'
+                # Check solid top piece
+            elif (board.board[0][x][1] in solid_top_piece) & (board.board[1][x][1] in solid_top_piece) & (board.board[2][x][1] in solid_top_piece) & (board.board[3][x][1] in solid_top_piece):
+                Win = True
+                how = ' Win by column by solid top piece'
     except:
         pass
     # # check Crosss1
