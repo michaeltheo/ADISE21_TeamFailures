@@ -141,14 +141,31 @@ def update(id: UUID, request: schemas.Boards, db: Session):
     if len(board_model.players) == 2:
         board.update({"isFull": True})
     db.commit()
-    checkWin(board_model)
+    checkResult(board_model)
     json_board = jsonable_encoder(board.first())
     return JSONResponse(content=json_board)
 
 
-def checkWin(board):
+# Πιονία
+# 1 =  tall square hollow-top
+# 2 =  tall square solid-top
+# 3 =  tall circle hollow-top
+# 4 =  tall circle solid-top
+
+# 5 =  short square hollow-top
+# 6 =  short square solid-top
+# 7 =  short circle hollow-top
+# 8 =  short circle solid-top
+
+def checkResult(board):
     Win = False
     how = ''
+    tall_piece = ["1", "2", "3", "4"]
+    short_piece = ["5", "6", "7", "8"]
+    circle_piece = ["3", "4", "7", "8"]
+    square_piece = ["1", "2", "5", "6"]
+    hollow_top_piece = ["1", "3", "5", "7"]
+    solid_top_piece = ["2", "4", "6", "8"]
     # check Rows
     try:
         for x in range(4):
