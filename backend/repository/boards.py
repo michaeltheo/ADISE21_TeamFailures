@@ -290,3 +290,5 @@ def checkResult(board):
             how = ' Win by cross by solid top piece'
     except:
         pass
+    if Win:
+        raise HTTPException(status_code=status.HTTP_200_OK, detail=f'{how}')
