@@ -292,3 +292,6 @@ def checkResult(board):
         pass
     if Win:
         raise HTTPException(status_code=status.HTTP_200_OK, detail=f'{how}')
+    if (not Win) and (get_board_length(board.board) == 16):
+        raise HTTPException(status_code=status.HTTP_200_OK,
+                            detail=f'{board.players[0]} vs {board.players[1]} DRAW')
