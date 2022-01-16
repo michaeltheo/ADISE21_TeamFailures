@@ -25,6 +25,7 @@ def create_board(request: schemas.Boards, db: Session):
                [None, None, None, None]],
         active_player=request.active_player,
         isFull=False,
+        status="active"
     )
     db.add(new_board)
     db.commit()
@@ -37,7 +38,6 @@ def get_random_board(db: Session):
     # find a board with 1 player already inside
     board = db.query(models.Boards).filter(
         models.Boards.isFull == False).first()
-    # models.Boards.players.name. !=None).first()
 
     if not board:
         raise HTTPException(
@@ -125,8 +125,11 @@ def update(id: UUID, request: schemas.Boards, db: Session):
     if not board_model:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Board with id {id} was not found",
+            detail=f"Board with id {id} was not found or game is finished",
         )
+    if board_model.status != "active":
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f'Game is finished. {board_model.status}. Please delete this board')
     if request.board:
         if request.active_player == board_model.active_player and (get_board_length(request.board)-get_board_length(board_model.board) == 1):
             update_board_attributes(request, board, board_model)
@@ -141,9 +144,17 @@ def update(id: UUID, request: schemas.Boards, db: Session):
     if len(board_model.players) == 2:
         board.update({"isFull": True})
     db.commit()
-    checkResult(board_model)
-    json_board = jsonable_encoder(board.first())
-    return JSONResponse(content=json_board)
+    win, how = checkresult(board_model)
+    if win:
+        board.update({"status": f'Winner is {request.active_player}'})
+        return JSONResponse(content={"detail": "We have a winner", "how": how, "winner": request.active_player})
+    else:
+        if how == "Draw":
+            board.update({"status": 'Game has finished in a draw'})
+            return JSONResponse(content={"detail": "Its a draw"})
+        else:
+            json_board = jsonable_encoder(board.first())
+            return JSONResponse(content=json_board)
 
 
 # Πιονία
@@ -291,7 +302,9 @@ def checkResult(board):
     except:
         pass
     if Win:
-        raise HTTPException(status_code=status.HTTP_200_OK, detail=f'{how}')
-    if (not Win) and (get_board_length(board.board) == 16):
-        raise HTTPException(status_code=status.HTTP_200_OK,
-                            detail=f'{board.players[0]} vs {board.players[1]} DRAW')
+        return Win, how
+    elif (not Win) and (get_board_length(board.board) == 16):
+        how = 'Draw'
+        return Win, how
+    else:
+        return False, how
