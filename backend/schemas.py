@@ -1,3 +1,4 @@
+from lib2to3.pgen2.token import OP
 from typing import List
 from fastapi.param_functions import Body
 from pydantic import BaseModel
@@ -45,6 +46,7 @@ class Boards(BaseModel):
     board: Optional[List]
     active_player: Optional[str]
     isFull: Optional[bool]
+    status: Optional[str]
 
     class Config:
         orm_mode = True

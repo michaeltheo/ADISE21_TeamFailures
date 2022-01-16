@@ -28,5 +28,5 @@ class Boards(Base):
     board = Column(postgresql.ARRAY(String))
     active_player = Column(String)
     isFull = Column(Boolean)
-
+    status = Column(String)
     creator = relationship("User", back_populates="boards")
