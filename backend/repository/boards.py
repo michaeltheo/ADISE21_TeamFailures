@@ -173,27 +173,27 @@ def checkResult(board):
                 Win = True
                 how = ' Win by row by color'
             # Check if the tall piece
-            elif (board.board[x][0][1] in tall_piece) & (board.board[x][1][1] in tall_piece) & (board.board[x][2][1] in tall_piece) & (board.board[x][3][1] in tall_piece):
+            elif (board.board[x][0][1] in tall_piece) and (board.board[x][1][1] in tall_piece) and (board.board[x][2][1] in tall_piece) and (board.board[x][3][1] in tall_piece):
                 Win = True
                 how = ' Win by row by tall piece'
             # Check short piece
-            elif (board.board[x][0][1] in short_piece) & (board.board[x][1][1] in short_piece) & (board.board[x][2][1] in short_piece) & (board.board[x][3][1] in short_piece):
+            elif (board.board[x][0][1] in short_piece) and (board.board[x][1][1] in short_piece) and (board.board[x][2][1] in short_piece) and (board.board[x][3][1] in short_piece):
                 Win = True
                 how = ' Win by row by short piece'
             # Check circle piece
-            elif (board.board[x][0][1] in circle_piece) & (board.board[x][1][1] in circle_piece) & (board.board[x][2][1] in circle_piece) & (board.board[x][3][1] in circle_piece):
+            elif (board.board[x][0][1] in circle_piece) and (board.board[x][1][1] in circle_piece) and (board.board[x][2][1] in circle_piece) and (board.board[x][3][1] in circle_piece):
                 Win = True
                 how = ' Win by row by circle piece'
             # Check square piece
-            elif (board.board[x][0][1] in square_piece) & (board.board[x][1][1] in square_piece) & (board.board[x][2][1] in square_piece) & (board.board[x][3][1] in square_piece):
+            elif (board.board[x][0][1] in square_piece) and (board.board[x][1][1] in square_piece) and (board.board[x][2][1] in square_piece) and (board.board[x][3][1] in square_piece):
                 Win = True
                 how = ' Win by row by square piece'
             # Check hollow top piece
-            elif (board.board[x][0][1] in hollow_top_piece) & (board.board[x][1][1] in hollow_top_piece) & (board.board[x][2][1] in hollow_top_piece) & (board.board[x][3][1] in hollow_top_piece):
+            elif (board.board[x][0][1] in hollow_top_piece) and (board.board[x][1][1] in hollow_top_piece) and (board.board[x][2][1] in hollow_top_piece) and (board.board[x][3][1] in hollow_top_piece):
                 Win = True
                 how = ' Win by row by hollow top piece'
             # Check solid top piece
-            elif (board.board[x][0][1] in solid_top_piece) & (board.board[x][1][1] in solid_top_piece) & (board.board[x][2][1] in solid_top_piece) & (board.board[x][3][1] in solid_top_piece):
+            elif (board.board[x][0][1] in solid_top_piece) and (board.board[x][1][1] in solid_top_piece) and (board.board[x][2][1] in solid_top_piece) and (board.board[x][3][1] in solid_top_piece):
                 Win = True
                 how = ' Win by row by solid top piece'
     except:
@@ -206,27 +206,27 @@ def checkResult(board):
                 Win = True
                 how = 'Win by column by color'
                 # Check if the tall piece
-            elif (board.board[0][x][1] in tall_piece) & (board.board[1][x][1] in tall_piece) & (board.board[2][x][1] in tall_piece) & (board.board[3][x][1] in tall_piece):
+            elif (board.board[0][x][1] in tall_piece) and (board.board[1][x][1] in tall_piece) and (board.board[2][x][1] in tall_piece) and (board.board[3][x][1] in tall_piece):
                 Win = True
                 how = ' Win by column by tall piece'
                 # Check short piece
-            elif (board.board[0][x][1] in short_piece) & (board.board[1][x][1] in short_piece) & (board.board[2][x][1] in short_piece) & (board.board[3][x][1] in short_piece):
+            elif (board.board[0][x][1] in short_piece) and (board.board[1][x][1] in short_piece) and (board.board[2][x][1] in short_piece) and (board.board[3][x][1] in short_piece):
                 Win = True
                 how = ' Win by column by short piece'
                 # Check circle piece
-            elif (board.board[0][x][1] in circle_piece) & (board.board[1][x][1] in circle_piece) & (board.board[2][x][1] in circle_piece) & (board.board[3][x][1] in circle_piece):
+            elif (board.board[0][x][1] in circle_piece) and (board.board[1][x][1] in circle_piece) and (board.board[2][x][1] in circle_piece) and (board.board[3][x][1] in circle_piece):
                 Win = True
                 how = ' Win by column by circle piece'
                 # Check square piece
-            elif (board.board[0][x][1] in square_piece) & (board.board[1][x][1] in square_piece) & (board.board[2][x][1] in square_piece) & (board.board[3][x][1] in square_piece):
+            elif (board.board[0][x][1] in square_piece) and (board.board[1][x][1] in square_piece) and (board.board[2][x][1] in square_piece) and (board.board[3][x][1] in square_piece):
                 Win = True
                 how = ' Win by column by square piece'
                 # Check hollow top piece
-            elif (board.board[0][x][1] in hollow_top_piece) & (board.board[1][x][1] in hollow_top_piece) & (board.board[2][x][1] in hollow_top_piece) & (board.board[3][x][1] in hollow_top_piece):
+            elif (board.board[0][x][1] in hollow_top_piece) and (board.board[1][x][1] in hollow_top_piece) and (board.board[2][x][1] in hollow_top_piece) and (board.board[3][x][1] in hollow_top_piece):
                 Win = True
                 how = ' Win by column by hollow top piece'
                 # Check solid top piece
-            elif (board.board[0][x][1] in solid_top_piece) & (board.board[1][x][1] in solid_top_piece) & (board.board[2][x][1] in solid_top_piece) & (board.board[3][x][1] in solid_top_piece):
+            elif (board.board[0][x][1] in solid_top_piece) and (board.board[1][x][1] in solid_top_piece) and (board.board[2][x][1] in solid_top_piece) and (board.board[3][x][1] in solid_top_piece):
                 Win = True
                 how = ' Win by column by solid top piece'
     except:
@@ -237,26 +237,26 @@ def checkResult(board):
             Win = True
             how = 'Win by cross by color'
             # Check if the tall piece
-        elif (board.board[0][0][1] in tall_piece) & (board.board[1][1][1] in tall_piece) & (board.board[2][2][1] in tall_piece) & (board.board[3][3][1] in tall_piece):
+        elif (board.board[0][0][1] in tall_piece) and (board.board[1][1][1] in tall_piece) and (board.board[2][2][1] in tall_piece) and (board.board[3][3][1] in tall_piece):
             Win = True
             how = ' Win by cross by tall piece'
-        elif (board.board[0][0][1] in short_piece) & (board.board[1][1][1] in short_piece) & (board.board[2][2][1] in short_piece) & (board.board[3][3][1] in short_piece):
+        elif (board.board[0][0][1] in short_piece) and (board.board[1][1][1] in short_piece) and (board.board[2][2][1] in short_piece) and (board.board[3][3][1] in short_piece):
             Win = True
             how = ' Win by cross by short piece'
             # Check circle piece
-        elif (board.board[0][0][1] in circle_piece) & (board.board[1][1][1] in circle_piece) & (board.board[2][2][1] in circle_piece) & (board.board[3][3][1] in circle_piece):
+        elif (board.board[0][0][1] in circle_piece) and (board.board[1][1][1] in circle_piece) and (board.board[2][2][1] in circle_piece) and (board.board[3][3][1] in circle_piece):
             Win = True
             how = ' Win by cross by circle piece'
             # Check square piece
-        elif (board.board[0][0][1] in square_piece) & (board.board[1][1][1] in square_piece) & (board.board[2][2][1] in square_piece) & (board.board[3][3][1] in square_piece):
+        elif (board.board[0][0][1] in square_piece) and (board.board[1][1][1] in square_piece) and (board.board[2][2][1] in square_piece) and (board.board[3][3][1] in square_piece):
             Win = True
             how = ' Win by cross by square piece'
             # Check hollow top piece
-        elif (board.board[0][0][1] in hollow_top_piece) & (board.board[1][1][1] in hollow_top_piece) & (board.board[2][2][1] in hollow_top_piece) & (board.board[3][3][1] in hollow_top_piece):
+        elif (board.board[0][0][1] in hollow_top_piece) and (board.board[1][1][1] in hollow_top_piece) and (board.board[2][2][1] in hollow_top_piece) and (board.board[3][3][1] in hollow_top_piece):
             Win = True
             how = ' Win by cross by hollow top piece'
             # Check solid top piece
-        elif (board.board[0][0][1] in solid_top_piece) & (board.board[1][1][1] in solid_top_piece) & (board.board[2][2][1] in solid_top_piece) & (board.board[3][3][1] in solid_top_piece):
+        elif (board.board[0][0][1] in solid_top_piece) and (board.board[1][1][1] in solid_top_piece) and (board.board[2][2][1] in solid_top_piece) and (board.board[3][3][1] in solid_top_piece):
             Win = True
             how = ' Win by cross by solid top piece'
     except:
@@ -266,26 +266,26 @@ def checkResult(board):
         if board.board[3][0][0] == board.board[2][1][0] == board.board[1][2][0] == board.board[0][3][0]:
             Win = True
             # Check if the tall piece
-        elif (board.board[3][0][1] in tall_piece) & (board.board[2][1][1] in tall_piece) & (board.board[1][2][1] in tall_piece) & (board.board[0][3][1] in tall_piece):
+        elif (board.board[3][0][1] in tall_piece) and (board.board[2][1][1] in tall_piece) and (board.board[1][2][1] in tall_piece) and (board.board[0][3][1] in tall_piece):
             Win = True
             how = ' Win by cross by tall piece'
-        elif (board.board[3][0][1] in short_piece) & (board.board[2][1][1] in short_piece) & (board.board[1][2][1] in short_piece) & (board.board[0][3][1] in short_piece):
+        elif (board.board[3][0][1] in short_piece) and (board.board[2][1][1] in short_piece) and (board.board[1][2][1] in short_piece) and (board.board[0][3][1] in short_piece):
             Win = True
             how = ' Win by cross by short piece'
             # Check circle piece
-        elif (board.board[3][0][1] in circle_piece) & (board.board[2][1][1] in circle_piece) & (board.board[1][2][1] in circle_piece) & (board.board[0][3][1] in circle_piece):
+        elif (board.board[3][0][1] in circle_piece) and (board.board[2][1][1] in circle_piece) and (board.board[1][2][1] in circle_piece) and (board.board[0][3][1] in circle_piece):
             Win = True
             how = ' Win by cross by circle piece'
             # Check square piece
-        elif (board.board[3][0][1] in square_piece) & (board.board[2][1][1] in square_piece) & (board.board[1][2][1] in square_piece) & (board.board[0][3][1] in square_piece):
+        elif (board.board[3][0][1] in square_piece) and (board.board[2][1][1] in square_piece) and (board.board[1][2][1] in square_piece) and (board.board[0][3][1] in square_piece):
             Win = True
             how = ' Win by cross by square piece'
             # Check hollow top piece
-        elif (board.board[3][0][1] in hollow_top_piece) & (board.board[2][1][1] in hollow_top_piece) & (board.board[1][2][1] in hollow_top_piece) & (board.board[0][3][1] in hollow_top_piece):
+        elif (board.board[3][0][1] in hollow_top_piece) and (board.board[2][1][1] in hollow_top_piece) and (board.board[1][2][1] in hollow_top_piece) and (board.board[0][3][1] in hollow_top_piece):
             Win = True
             how = ' Win by cross by hollow top piece'
             # Check solid top piece
-        elif (board.board[3][0][1] in solid_top_piece) & (board.board[2][1][1] in solid_top_piece) & (board.board[1][2][1] in solid_top_piece) & (board.board[0][3][1] in solid_top_piece):
+        elif (board.board[3][0][1] in solid_top_piece) and (board.board[2][1][1] in solid_top_piece) and (board.board[1][2][1] in solid_top_piece) and (board.board[0][3][1] in solid_top_piece):
             Win = True
             how = ' Win by cross by solid top piece'
     except:
