@@ -2,13 +2,13 @@ from uuid import UUID, uuid4
 from pydantic.networks import HttpUrl
 from sqlalchemy.inspection import inspect
 from sqlalchemy.orm.session import Session
-from sqlalchemy.sql.elements import Null, and_, or_
+
 from sqlalchemy.sql.functions import mode
 from sqlalchemy.sql.operators import isnot
 from backend import schemas, models, database
 from fastapi import HTTPException, status
-from sqlalchemy.sql.expression import asc, desc, false, func
-from typing import List
+
+
 from fastapi import APIRouter, Depends
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
